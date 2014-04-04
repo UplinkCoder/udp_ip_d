@@ -18,7 +18,7 @@ struct Eth {
 
 		string toString()
 		{
-			char[6*3] str;
+			char[6*3-1] str;
 			
 			sprintf(str.ptr,"%02X:%02X:%02X:%02X:%02X:%02X",
 				mac8[0],
@@ -27,7 +27,6 @@ struct Eth {
 				mac8[3],
 				mac8[4], 
 				mac8[5],
-				'\0'
 			);
 			return str.idup;
 		} 

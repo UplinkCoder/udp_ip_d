@@ -1,5 +1,6 @@
 module udp_ip.ip;
 import core.stdc.stdio:sprintf;
+import core.stdc.string:strlen;
 import ctypes;
 
 struct Ipv4 {
@@ -40,13 +41,14 @@ struct Ipv4 {
 
 		string toString() 
 		{
-			char[4*3] str;
+			static char[4*4] str;
 			sprintf(str.ptr,"%d.%d.%d.%d",
 				_ip.ip_8[0],
 				_ip.ip_8[1],
 				_ip.ip_8[2],
-				_ip.ip_8[3]);
-			return str.idup;
+				_ip.ip_8[3]
+			);
+			return str[0 .. strlen(str.ptr)].idup;
 	    } 
 	}
 }
