@@ -12,7 +12,7 @@ struct Ipv4 {
 	}
 
 	static struct Hdr  {//ip header (20 bytes)
-		align (1):
+	align (1):
 		uint8_t     ipVersion = 0x45;
 		uint8_t     differentiatedServices=0;
 		uint16_t    totalLength;       
@@ -26,6 +26,7 @@ struct Ipv4 {
 	}
 
 	static struct Addr {
+	align(1):
 		static immutable ubyte AddrLen=4;
 		private union UniIp {
 	    	uint ip_32;

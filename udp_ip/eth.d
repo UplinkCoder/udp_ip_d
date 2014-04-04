@@ -11,14 +11,22 @@ struct Eth {
 		ip=bigEndian!ushort(0x0800)
 	}
 
+	struct Hdr {
+	align(1):  
+		Addr dstMac;
+		Addr srcMac;
+		Type type;
+	}
+
 	struct Addr 
 	{
+	align(1):
 		static immutable AddrLen=6; 
 		uint8_t		mac8[6];
 
 		string toString()
 		{
-			char[6*3-1] str;
+			static char[6*3-1] str;
 			
 			sprintf(str.ptr,"%02X:%02X:%02X:%02X:%02X:%02X",
 				mac8[0],
@@ -32,12 +40,6 @@ struct Eth {
 		} 
 	}
 
-	struct Hdr { //ethernet header (14 bytes)  
-		Addr dstMac;		//0xFFFFFFFFFFFF=any (broadcast)
-		Addr srcMac;
-		Type type;
-	}
-	
 }
 
 deprecated alias Mac 	= Eth.Addr;

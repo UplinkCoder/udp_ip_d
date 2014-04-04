@@ -9,7 +9,7 @@ import	udp_ip.eth,
 struct Udp {
 
 	static struct Hdr {
-	    align (1) :
+	align (1) :
 	    uint16_t srcPort;
 	    uint16_t dstPort;
 	    uint16_t length;
