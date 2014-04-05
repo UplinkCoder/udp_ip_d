@@ -34,7 +34,7 @@ struct Eth {
 				mac8[2],
 				mac8[3],
 				mac8[4], 
-				mac8[5],
+				mac8[5]
 			);
 			return str.idup;
 		} 
