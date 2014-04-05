@@ -1,17 +1,19 @@
 module udp_ip.eth;
 import core.stdc.stdio:sprintf;
 import utils.endian;
-import std.bitmanip;
 import ctypes;
 
-struct Eth {
+struct Eth 
+{
 
-	enum Type:ushort {
-		arp=bigEndian!ushort(0x0806),
-		ip=bigEndian!ushort(0x0800)
+	enum Type:ushort 
+	{
+		arp=htons(0x0806),
+		ip=htons(0x0800)
 	}
 
-	struct Hdr {
+	struct Hdr 
+	{
 	align(1):  
 		Addr dstMac;
 		Addr srcMac;
@@ -41,5 +43,3 @@ struct Eth {
 	}
 
 }
-
-deprecated alias Mac 	= Eth.Addr;
